@@ -2,10 +2,60 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Herramientas</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Estilos básicos para el modal */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            box-shadow: 0 0 10px #000;
+            position: relative;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .herramienta-card {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .herramienta-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 
 <body>
@@ -23,116 +73,215 @@
         </nav>
     </header>
 
-
     <section class="herramientas">
         <h2>Herramientas para Cableado Estructurado</h2>
         <div class="herramientas-container">
 
-            <div class="herramienta-card">
-                <img src="./crimpadora.jpg" alt="Crimpadora RJ45/RJ11">
+            <div class="herramienta-card" data-nombre="Ponchadora RJ45" data-descripcion="
+- Validar marcas y distancias: Asegurar que el cable esté cortado a la longitud adecuada para la conexión (normalmente hasta 1.5 cm de la punta para insertar en la ficha RJ45). La ponchadora debe tener la marca de posicionamiento correcta para cada tipo de conector (cat5e, cat6).
+- Validar parámetros y configuraciones: Comprobar que los cables están en el orden correcto según estándar T568A o T568B. Verificar que la ponchadora aplica presión suficiente para crimpar sin dañar el conector.
+- Material y configuraciones: Herramienta metálica con mango aislado, compatible con conectores modulares RJ45; deben cumplir con especificaciones ergonómicas y de resistencia.
+">
+                <img src="./crimpadora.jpg" alt="Crimpadora RJ45/RJ11" />
                 <h3>Ponchadora RJ45</h3>
                 <p>Herramienta para colocar conectores en cables de red o telefonía.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./punch-down-tool.jpg" alt="Ponchadora de impacto">
+            <div class="herramienta-card" data-nombre="Ponchadora de impacto" data-descripcion="
+- Validar marcas y distancias: Usada para terminales tipo RJ11/RJ45, debe tener puntos de referencia para presión correcta.
+- Validar parámetros y configuraciones: Ajuste para diferentes tipos de conectores.
+- Material y configuraciones: Construcción robusta, mango ergonómico.
+">
+                <img src="./punch-down-tool.jpg" alt="Ponchadora de impacto" />
                 <h3>Ponchadora de impacto</h3>
                 <p>Inserta cables en patch panels y jacks Keystone.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./pelacables.jpg" alt="Pelacables">
+            <div class="herramienta-card" data-nombre="Pelacables" data-descripcion="
+- Validar marcas y distancias: Ajustable a diferentes calibres para no dañar conductores.
+- Validar parámetros y configuraciones: Cortes precisos sin pelar en exceso.
+- Material y configuraciones: Hoja de acero templado con mango aislado.
+">
+                <img src="./pelacables.jpg" alt="Pelacables" />
                 <h3>Pelacables</h3>
                 <p>Retira la cubierta del cable sin dañar los conductores.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./probador-red.jpg" alt="Probador de cables">
+            <div class="herramienta-card" data-nombre="Probador de red (Tester)" data-descripcion="
+- Validar marcas y distancias: Debe indicar continuidad, cruce y longitud del cable. Distancia de prueba según especificación (hasta 100 m para cables de red).
+- Validar parámetros y configuraciones: Compatible con cables UTP/STP, protocolos comunes (Cat5e, Cat6).
+- Material y configuraciones: Carcasa robusta con display LED o LCD; baterías recargables o estándar.
+">
+                <img src="./probador-red.jpg" alt="Probador de cables" />
                 <h3>Probador de red (Tester)</h3>
                 <p>Verifica la continuidad y correcto armado de cables.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./cortacables.png" alt="Cortadora de cables">
+            <div class="herramienta-card" data-nombre="Cortadora de cables" data-descripcion="
+- Validar marcas y distancias: Debe permitir cortes limpios sin aplastar el cable, especialmente para cables de red.
+- Validar parámetros y configuraciones: Capacidad para cortar cables de diferentes calibres (22-26 AWG típico en red).
+- Material y configuraciones: Acero de alta resistencia con mango aislado.
+">
+                <img src="./cortacables.png" alt="Cortadora de cables" />
                 <h3>Cortadora de cables</h3>
                 <p>Corta cables de cobre o par trenzado de forma limpia.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./destornilladores.jpg" alt="Destornilladores">
+            <div class="herramienta-card" data-nombre="Destornilladores (Plano y de Cruz)" data-descripcion="
+- Validar marcas y distancias: Marca del fabricante visible, tamaños adecuados para tornillos en conectores o dispositivos.
+- Validar parámetros y configuraciones: Mango aislado para protección eléctrica, puntas magnéticas o anti-deslizantes.
+- Material y configuraciones: Acero templado con mango ergonómico y aislamiento dieléctrico certificado (mínimo 1000 V).
+">
+                <img src="./destornilladores.jpg" alt="Destornilladores" />
                 <h3>Destornilladores (Plano y de Cruz)</h3>
                 <p>Ajuste y fijación de elementos en instalaciones.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./cinta-metrica.jpg" alt="Cinta métrica">
+            <div class="herramienta-card" data-nombre="Cinta métrica" data-descripcion="
+- Validar marcas y distancias: Marcas legibles en mm y cm, no deben estar desgastadas. Distancia mínima a respetar para separaciones entre cables y elementos metálicos (por ejemplo, 5 cm).
+- Validar parámetros y configuraciones: Medición precisa con margen de error mínimo.
+- Material y configuraciones: Acero o fibra de vidrio para evitar deformaciones.
+">
+                <img src="./cinta-metrica.jpg" alt="Cinta métrica" />
                 <h3>Cinta métrica</h3>
                 <p>Medición precisa de distancias en la instalación.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./cinta-aislante.jpg" alt="Cinta aislante">
+            <div class="herramienta-card" data-nombre="Cinta aislante" data-descripcion="
+- Validar marcas y distancias: Usar cinta con certificación eléctrica (UL o IEC). Enrollar sin dejar espacios y superponer capas, mínimo 50% de superposición.
+- Validar parámetros y configuraciones: Aislamiento de al menos 600 V, resistente a temperatura y humedad.
+- Material y configuraciones: PVC o vinilo con adhesivo de alta adherencia y resistencia a la abrasión y al envejecimiento.
+">
+                <img src="./cinta-aislante.jpg" alt="Cinta aislante" />
                 <h3>Cinta aislante</h3>
                 <p>Protección y aislamiento de uniones eléctricas.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./bridas.jpg" alt="Bridas plásticas">
+            <div class="herramienta-card" data-nombre="Bridas plásticas (Abrazaderas)" data-descripcion="
+- Validar marcas y distancias: Las bridas deben colocarse a intervalos recomendados (por ejemplo, cada 30 cm en cableado estructurado para evitar tensión). Deben ser de marcas certificadas para uso eléctrico.
+- Validar parámetros y configuraciones: Verificar resistencia a la tracción y temperatura (normalmente de nylon UL94V-2 o superior).
+- Material y configuraciones: Nylon autoextinguible, resistente a la UV si se usan en exteriores, tamaño adecuado al grosor del cable.
+">
+                <img src="./bridas.jpg" alt="Bridas plásticas" />
                 <h3>Bridas plásticas (Abrazaderas)</h3>
                 <p>Organización y sujeción de cables.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./guantes.jpg" alt="Guantes de seguridad">
+            <div class="herramienta-card" data-nombre="Guantes de seguridad" data-descripcion="
+- Validar marcas y distancias: Deben cumplir normas de resistencia eléctrica (EN 60903, ASTM D120).
+- Validar parámetros y configuraciones: Uso según tensión a manipular.
+- Material y configuraciones: Caucho o látex aislante, con certificados.
+">
+                <img src="./guantes.jpg" alt="Guantes de seguridad" />
                 <h3>Guantes de seguridad</h3>
                 <p>Protección de manos en trabajos eléctricos o de cableado.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./escalera.jpg" alt="Escalera">
+            <div class="herramienta-card" data-nombre="Escalera" data-descripcion="
+- Validar marcas y distancias: Debe tener certificaciones de seguridad, altura adecuada y estabilidad.
+- Validar parámetros y configuraciones: No debe estar apoyada en cables o elementos eléctricos.
+- Material y configuraciones: Material aislante o metálico con recubrimiento antideslizante.
+">
+                <img src="./escalera.jpg" alt="Escalera" />
                 <h3>Escalera</h3>
                 <p>Acceso a zonas altas para tendido de cables.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./taladro.jpg" alt="Taladro percutor">
+            <div class="herramienta-card" data-nombre="Taladro percutor" data-descripcion="
+- Validar marcas y distancias: Uso para perforar paredes para paso de canalizaciones, respetar distancias seguras de instalaciones eléctricas.
+- Validar parámetros y configuraciones: Velocidad ajustable y potencia adecuada.
+- Material y configuraciones: Motor con protección térmica, mango ergonómico.
+">
+                <img src="./taladro.jpg" alt="Taladro percutor" />
                 <h3>Taladro percutor</h3>
                 <p>Perforación en muros para instalar canaletas o soportes.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./canaletas.jpg" alt="Canaletas y accesorios">
+            <div class="herramienta-card" data-nombre="Canaletas y accesorios" data-descripcion="
+- Validar marcas y distancias: Se debe respetar el recorrido y las distancias de separación de cables de potencia y datos.
+- Validar parámetros y configuraciones: Resistencia al fuego y a impactos.
+- Material y configuraciones: PVC retardante a la llama, resistente.
+">
+                <img src="./canaletas.jpg" alt="Canaletas y accesorios" />
                 <h3>Canaletas y accesorios</h3>
                 <p>Protección y organización del cableado en superficie.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./bandeja.png" alt="Bandejas porta cables">
+            <div class="herramienta-card" data-nombre="Bandejas porta cables" data-descripcion="
+- Validar marcas y distancias: Instaladas respetando distancias mínimas entre bandejas (para evitar acumulación de calor).
+- Validar parámetros y configuraciones: Capacidad para el peso y volumen de cables instalados.
+- Material y configuraciones: Acero galvanizado o aluminio.
+">
+                <img src="./bandeja.png" alt="Bandejas porta cables" />
                 <h3>Bandejas porta cables</h3>
                 <p>Soporte para el cableado en instalaciones industriales.</p>
             </div>
 
-            <div class="herramienta-card">
-                <img src="./tijeras.jpg" alt="Tijeras de electricista">
+            <div class="herramienta-card" data-nombre="Tijeras de electricista" data-descripcion="
+- Validar marcas y distancias: Cuchillas afiladas, con punta y filo apropiado para cables.
+- Validar parámetros y configuraciones: Mango aislado y ergonómico.
+- Material y configuraciones: Acero inoxidable o templado.
+">
+                <img src="./tijeras.jpg" alt="Tijeras de electricista" />
                 <h3>Tijeras de electricista</h3>
                 <p>Corte preciso de conductores y materiales plásticos.</p>
             </div>
-            <div class="herramienta-card">
-                <img src="./organizador-cables.jpg" alt="Organizador de Cables">
+
+            <div class="herramienta-card" data-nombre="Organizador de Cables" data-descripcion="
+- Validar marcas y distancias: Deben mantener separación y orden según normas para evitar interferencias.
+- Validar parámetros y configuraciones: Capacidad adecuada según volumen de cables.
+- Material y configuraciones: Plástico o metálico resistente, antiestático.
+">
+                <img src="./organizador-cables.jpg" alt="Organizador de Cables" />
                 <h3>Organizador de Cables</h3>
                 <p>Permite agrupar y ordenar cables para mantener un entorno de instalación limpio y seguro.</p>
             </div>
-
         </div>
     </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="cerrar" class="close-btn">&times;</span>
+            <h2 id="modal-titulo"></h2>
+            <pre id="modal-descripcion" style="white-space: pre-wrap;"></pre>
+        </div>
+    </div>
 
     <footer>
         <p>© 2025 Blog de Cableado Estructurado</p>
     </footer>
+
+    <script>
+        const modal = document.getElementById('modal');
+        const modalTitulo = document.getElementById('modal-titulo');
+        const modalDescripcion = document.getElementById('modal-descripcion');
+        const cerrarBtn = document.getElementById('cerrar');
+
+        document.querySelectorAll('.herramienta-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const nombre = card.getAttribute('data-nombre');
+                const descripcion = card.getAttribute('data-descripcion');
+                modalTitulo.textContent = nombre;
+                modalDescripcion.textContent = descripcion.trim();
+                modal.style.display = 'block';
+            });
+        });
+
+        cerrarBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
-
 </html>
+
 
 
 
