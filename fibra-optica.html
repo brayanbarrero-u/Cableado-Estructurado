@@ -1,11 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fibra Óptica - Blog Cableado Estructurado</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Modal básico con animación fade */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeInBg 0.3s forwards;
+        }
+
+        @keyframes fadeInBg {
+            from {
+                background-color: rgba(0, 0, 0, 0);
+            }
+
+            to {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 8% auto;
+            padding: 25px 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+            position: relative;
+            animation: slideDown 0.3s ease forwards;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.25s ease;
+            user-select: none;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        /* Términos clicables con transición de color */
+        .concepto {
+            color: #007BFF;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.25s ease;
+        }
+
+        .concepto:hover {
+            color: #0056b3;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .modal-content {
+                margin: 15% 20px;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <h1>Cableado Estructurado y Climatización</h1>
@@ -23,16 +112,101 @@
 
     <section>
         <div class="card fade-in">
-            <h2>Fibra Óptica</h2>
-            <p>La fibra óptica transmite datos a través de pulsos de luz, ofreciendo una velocidad y capacidad superiores a los cables de cobre.</p>
-            <img src="./slider-fibra.jpg" alt="Fibra Óptica">
-            <p>Es ideal para largas distancias y entornos donde la interferencia electromagnética es un problema. Existen diferentes tipos como monomodo y multimodo.</p>
+            <h2><span class="concepto" data-nombre="Fibra Óptica" data-descripcion="
+- Validar marcas y distancias: Utilizar fibras certificadas por estándares internacionales (ITU, ANSI/TIA). Respetar las distancias máximas según tipo de fibra para evitar atenuación excesiva.
+- Validar parámetros y configuraciones: Comprobar pérdidas ópticas con OTDR, validar conectores y empalmes. Mantener el radio mínimo de curvatura.
+- Material y configuraciones: Núcleo de vidrio o plástico, recubrimiento con revestimientos protectores. Según normas IEC 60793 e ITU-T G.652 (monomodo) y G.651 (multimodo).
+">Fibra Óptica</span></h2>
+
+            <p>
+                La <span class="concepto" data-nombre="Fibra Óptica" data-descripcion="
+- Validar marcas y distancias: Utilizar fibras certificadas por estándares internacionales (ITU, ANSI/TIA). Respetar las distancias máximas según tipo de fibra para evitar atenuación excesiva.
+- Validar parámetros y configuraciones: Comprobar pérdidas ópticas con OTDR, validar conectores y empalmes. Mantener el radio mínimo de curvatura.
+- Material y configuraciones: Núcleo de vidrio o plástico, recubrimiento con revestimientos protectores. Según normas IEC 60793 e ITU-T G.652 (monomodo) y G.651 (multimodo).
+">fibra óptica</span> transmite datos a través de pulsos de luz, ofreciendo una velocidad y capacidad superiores a los cables de cobre.
+            </p>
+
+            <img src="./slider-fibra.jpg" alt="Fibra Óptica" />
+
+            <p>
+                Es ideal para largas distancias y entornos donde la interferencia electromagnética es un problema. Existen diferentes tipos como
+                <span class="concepto" data-nombre="Fibra monomodo" data-descripcion="
+- Validar marcas y distancias: Asegurar que la fibra monomodo cumpla con estándares ITU-T G.652 y ANSI/TIA-568.
+- Validar parámetros y configuraciones: Transmisión a larga distancia con baja atenuación; usar conectores tipo FC o SC.
+- Material y configuraciones: Núcleo pequeño (~9 µm), revestimiento de vidrio y protección externa robusta.
+">fibra monomodo</span> y
+                <span class="concepto" data-nombre="Fibra multimodo" data-descripcion="
+- Validar marcas y distancias: Usar fibra multimodo certificada bajo normas IEC 60793-2-10 y ANSI/TIA-568.
+- Validar parámetros y configuraciones: Transmisión en distancias cortas a medias; usa conectores tipo ST o LC.
+- Material y configuraciones: Núcleo mayor (~50-62.5 µm) para múltiples modos de luz; revestimiento protector.
+">fibra multimodo</span>.
+            </p>
+
+            <p>
+                Además, los <span class="concepto" data-nombre="Conectores de fibra óptica" data-descripcion="
+- Validar marcas y distancias: Usar conectores certificados y compatibles con la fibra. Mantener limpieza y evitar daños.
+- Validar parámetros y configuraciones: Baja pérdida de inserción y retorno; asegurarse de empalmes correctos.
+- Material y configuraciones: Fabricados en cerámica o plástico, con precisión micrométrica.
+">conectores de fibra óptica</span> y los
+                <span class="concepto" data-nombre="Cable de fibra óptica" data-descripcion="
+- Validar marcas y distancias: Respetar normas para instalación y protección contra tensión y doblado.
+- Validar parámetros y configuraciones: Resistencia mecánica, protección contra humedad y fuego.
+- Material y configuraciones: Cubierta externa de PVC o LSZH, núcleo de vidrio/plástico, y buffers protectores.
+">cables de fibra óptica</span> son componentes esenciales para un sistema de calidad.
+            </p>
         </div>
     </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-titulo" aria-describedby="modal-descripcion">
+        <div class="modal-content">
+            <button id="cerrar" class="close-btn" aria-label="Cerrar modal">&times;</button>
+            <h2 id="modal-titulo"></h2>
+            <p id="modal-descripcion"></p>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2025 Blog Cableado Estructurado - Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        const modal = document.getElementById('modal');
+        const modalTitulo = document.getElementById('modal-titulo');
+        const modalDescripcion = document.getElementById('modal-descripcion');
+        const cerrarBtn = document.getElementById('cerrar');
+
+        document.querySelectorAll('.concepto').forEach(elem => {
+            elem.addEventListener('click', () => {
+                const nombre = elem.getAttribute('data-nombre');
+                const descripcion = elem.getAttribute('data-descripcion');
+                modalTitulo.textContent = nombre;
+                modalDescripcion.textContent = descripcion.trim();
+                modal.style.display = 'block';
+                modal.setAttribute('aria-hidden', 'false');
+            });
+        });
+
+        cerrarBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                modal.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        // Cerrar modal con tecla ESC
+        window.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                modal.setAttribute('aria-hidden', 'true');
+            }
+        });
+    </script>
 </body>
 
 </html>
