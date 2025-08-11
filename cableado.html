@@ -1,11 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cable RJ45 - Blog Cableado Estructurado</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Estilos modal (igual que antes) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            box-shadow: 0 0 10px #000;
+            position: relative;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        /* Para los términos clicables */
+        .concepto {
+            color: #007BFF;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .concepto:hover {
+            color: #0056b3;
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <h1>Cableado Estructurado y Climatización</h1>
@@ -23,17 +77,65 @@
 
     <section>
         <div class="card fade-in">
-            <h2>Cable RJ45</h2>
-            <p>El cable RJ45 es el estándar para la conexión de redes Ethernet. Está compuesto por 8 hilos de cobre trenzados en pares que permiten la transmisión de datos a altas velocidades.</p>
-            <img src="./cable-cat6.jpg" alt="Cable Cat6">
-            <p>Los cables pueden ser de diferentes categorías, como Cat5e, Cat6 y Cat7, cada uno con velocidades y frecuencias distintas. La elección dependerá de las necesidades de la red.</p>
-            <img src="./cable-rj45-cat7.jpg" alt="Cable RJ45 Cat7">
+            <h2><span class="concepto" data-nombre="Cable RJ45" data-descripcion="El cable RJ45 es un conector estándar utilizado para cables de red Ethernet, compuesto por 8 conductores de cobre trenzados en pares. Permite la transmisión de datos en redes LAN con alta velocidad y estabilidad.">Cable RJ45</span></h2>
+
+            <p>
+                El <span class="concepto" data-nombre="Cable RJ45" data-descripcion="El cable RJ45 es un conector estándar utilizado para cables de red Ethernet, compuesto por 8 conductores de cobre trenzados en pares. Permite la transmisión de datos en redes LAN con alta velocidad y estabilidad.">cable RJ45</span> es el estándar para la conexión de redes Ethernet. Está compuesto por 8 hilos de cobre trenzados en pares que permiten la transmisión de datos a altas velocidades.
+            </p>
+
+            <img src="imagenes/cable-cat6.jpg" alt="Cable Cat6" />
+
+            <p>
+                Los cables pueden ser de diferentes categorías, como
+                <span class="concepto" data-nombre="Cat5e" data-descripcion="El cable Cat5e (Categoría 5 mejorada) soporta velocidades de hasta 1 Gbps y frecuencias de hasta 100 MHz. Es adecuado para la mayoría de redes Ethernet estándar actuales.">Cat5e</span>,
+                <span class="concepto" data-nombre="Cat6" data-descripcion="El cable Cat6 (Categoría 6) soporta velocidades de hasta 10 Gbps en distancias cortas y frecuencias de hasta 250 MHz, ofreciendo mejor rendimiento frente a interferencias que Cat5e.">Cat6</span> y
+                <span class="concepto" data-nombre="Cat7" data-descripcion="El cable Cat7 (Categoría 7) soporta velocidades de hasta 10 Gbps y frecuencias de hasta 600 MHz, con un mejor blindaje que reduce la interferencia, ideal para redes de alta demanda.">Cat7</span>,
+                cada uno con velocidades y frecuencias distintas. La elección dependerá de las necesidades de la red.
+            </p>
+
+            <img src="imagenes/cable-rj45-cat7.jpg" alt="Cable RJ45 Cat7" />
         </div>
     </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="cerrar" class="close-btn">&times;</span>
+            <h2 id="modal-titulo"></h2>
+            <p id="modal-descripcion"></p>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2025 Blog Cableado Estructurado - Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        const modal = document.getElementById('modal');
+        const modalTitulo = document.getElementById('modal-titulo');
+        const modalDescripcion = document.getElementById('modal-descripcion');
+        const cerrarBtn = document.getElementById('cerrar');
+
+        document.querySelectorAll('.concepto').forEach(elem => {
+            elem.addEventListener('click', () => {
+                const nombre = elem.getAttribute('data-nombre');
+                const descripcion = elem.getAttribute('data-descripcion');
+                modalTitulo.textContent = nombre;
+                modalDescripcion.textContent = descripcion;
+                modal.style.display = 'block';
+            });
+        });
+
+        cerrarBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>
